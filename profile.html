@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+</head>
+<body>
+    <img src="" alt="" id="imgGender">
+    <h3 >Welcome <span id="User_Name"></span> you Have visited this site <span id="visitsTimes"></span> times :)</h3>
+    <script src="cookie.js"></script>
+    <script>
+        var cookieUserName = localStorage.getItem("userNmae");
+        var cookieGender = localStorage.getItem("gender");
+        var cookieColor = localStorage.getItem("color");
+        var cookieVisits = localStorage.getItem("countVisits");
+        var UserName = cookieUserName;
+        var Gender = cookieGender;
+        var Color = cookieColor;
+        var visits =parseInt(cookieVisits);
+        var scourse;
+        if (Gender === "male") {
+            scourse = "/images/1.jpg";
+        }else{
+            scourse = "/images/2.jpg";
+        }
+        function tracVisits(){
+            visits++;
+            localStorage.setItem("countVisits",visits)
+        }
+        document.getElementById("imgGender").src = scourse;
+        document.getElementById("User_Name").innerText = UserName;
+        document.getElementById("visitsTimes").innerText = visits;
+        document.getElementById("User_Name").style ="color:" + Color;
+        document.getElementById("visitsTimes").style ="color:" + Color;
+        tracVisits();
+    </script>
+</body>
+</html>

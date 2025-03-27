@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        input[type="tel"]:invalid{
+            border-color: red;
+        }
+        input[type="tel"]:valid{
+            border-color: green;
+        }
+    </style>
+</head>
+<body>
+    <label for="userNmae"><b>Enter Your Name:</b></label>
+    <input type="text" name="userNmae" id="userNmae"><br><br>
+    <label for="Age"><b>Enter Your Age:</b></label>
+    <input type="text" name="Age" id="Age"><br><br><br>
+    <label for="gender"><b>Select Youe Gender:</b></label><br><br>
+    <input type="radio" name="gender" id="male" value="male">
+    <img src="/images/1.jpg" alt="Man">
+    <input type="radio" name="gender" id="female" value="female">
+    <img src="/images/2.jpg" alt="Woman"><br><br>
+    <label for="color"><b>Select Your Favorite color:</b></label>
+    <select name="color" id="color">
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+    </select><br><br>
+    <input type="submit" value="register" onclick="register()">
+    <input type="tel" pattern="\d{11}" placeholder="enter 11-digit phone number">
+
+    <script>
+        function register(){
+            location.replace("profile.html");
+            localStorage.setItem("userNmae",document.getElementById("userNmae").value);
+            var radio = document.getElementsByName("gender");
+            var selected;
+            for (let i = 0; i < radio.length; i++) {
+                if(radio[i].checked){
+                    selected =radio[i];
+                }
+            }
+            localStorage.setItem("gender",selected.value);
+            localStorage.setItem("color",document.getElementById("color").value);
+            localStorage.setItem("countVisits","1");
+        }
+    </script>
+    <script src="PolyFill.js"></script>
+</body>
+</html>
